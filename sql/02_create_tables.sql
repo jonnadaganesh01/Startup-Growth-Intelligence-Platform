@@ -10,3 +10,25 @@ CREATE TABLE users (
     subscription_plan VARCHAR(20) DEFAULT 'Free',
     account_status VARCHAR(20) DEFAULT 'Active'
 );
+
+
+CREATE TABLE sessions (
+
+    session_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    user_id INT,
+
+    login_time DATETIME,
+
+    logout_time DATETIME,
+
+    session_duration INT,
+
+    device VARCHAR(30),
+
+    browser VARCHAR(30),
+
+    FOREIGN KEY (user_id)
+    REFERENCES users(user_id)
+
+);
