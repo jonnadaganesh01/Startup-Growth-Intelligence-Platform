@@ -32,3 +32,67 @@ CREATE TABLE sessions (
     REFERENCES users(user_id)
 
 );
+
+CREATE TABLE feature_events (
+
+    event_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    user_id INT,
+
+    session_id INT,
+
+    feature_name VARCHAR(100),
+
+    event_time DATETIME,
+
+    event_type VARCHAR(50),
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(user_id),
+
+    FOREIGN KEY (session_id)
+        REFERENCES sessions(session_id)
+
+);
+
+CREATE TABLE subscriptions (
+
+    subscription_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    user_id INT,
+
+    plan_name VARCHAR(50),
+
+    start_date DATE,
+
+    end_date DATE,
+
+    amount DECIMAL(10,2),
+
+    payment_status VARCHAR(30),
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+
+);
+
+CREATE TABLE support_tickets (
+
+    ticket_id INT PRIMARY KEY AUTO_INCREMENT,
+
+    user_id INT,
+
+    issue_type VARCHAR(100),
+
+    priority VARCHAR(20),
+
+    ticket_status VARCHAR(30),
+
+    created_at DATETIME,
+
+    resolved_at DATETIME,
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(user_id)
+
+);
